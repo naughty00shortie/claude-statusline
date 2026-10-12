@@ -1,0 +1,11 @@
+{
+  "name": "claude-statusline",
+  "owner": { "name": "naughty00shortie" },
+  "plugins": [
+    {
+      "name": "provider-switch",
+      "source": "./plugins/provider-switch",
+      "description": "/pv shortcut to switch between 9router and the Anthropic subscription"
+    }
+  ]
+}

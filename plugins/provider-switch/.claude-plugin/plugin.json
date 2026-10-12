@@ -1,0 +1,6 @@
+{
+  "name": "provider-switch",
+  "version": "0.2.0",
+  "description": "/provider and the /pv shortcut: switch Claude Code between a 9router gateway and the normal Anthropic subscription, no model call",
+  "author": { "name": "naughty00shortie" }
+}

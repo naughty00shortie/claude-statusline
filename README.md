@@ -73,6 +73,26 @@ The fetcher logs in to the dashboard, reads each active Claude connection's `ses
 
 This uses the dashboard password, not your API key. The password is only sent to your own gateway.
 
+## Provider switch: `/pv`
+
+A small Claude Code plugin for flipping between a 9router gateway and your normal Anthropic subscription without editing `settings.json` by hand. No model call is made.
+
+Install it from inside Claude Code:
+
+```
+/plugin install provider-switch --marketplace naughty00shortie/claude-statusline
+```
+
+| Command | Does |
+| --- | --- |
+| `/pv` | toggle to the other provider |
+| `/pv a` | Anthropic subscription (any prefix works: `a`, `an`, `anthropic`) |
+| `/pv 9` | back to 9router (`9`, `r`, `9router`) |
+| `/pv s` | show which provider is active |
+| `/provider ...` | the same thing under the long name; bare `/provider` shows status |
+
+Going to Anthropic moves the 9router `env` keys (`ANTHROPIC_BASE_URL`, `ANTHROPIC_AUTH_TOKEN`, the `ANTHROPIC_DEFAULT_*_MODEL` entries, `CLAUDE_CODE_MAX_CONTEXT_TOKENS`, ...) out of `~/.claude/settings.json` into `~/.claude/provider-9router-env.json`; going back moves them in again. Restart Claude Code after switching. You can only switch back to 9router if you started on it, since the saved file is what holds your settings.
+
 ## How it works
 
 `statusline.sh` reads Claude Code's JSON payload on stdin and prints the lines. It never starts PowerShell itself: on Windows a single long-lived hidden helper (`statusline-helper.ps1`, launched via `statusline-helper.vbs`) refreshes CPU/RAM and Spotify caches, and exits on its own ten minutes after the status line stops being used.
